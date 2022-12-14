@@ -1,0 +1,18 @@
+#fdisk -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco3.dsk" -name=pereznator -u=k -add=10
+
+#fdisk -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco2.dsk" -name=jorigot -delete=full
+
+#mkdisk -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco.dsk" -s=50 -f=bf -u=k
+
+#fdisk -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco.dsk" -name=primera -s=10 -u=k -f=ff -t=p
+#fdisk -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco.dsk" -name=segunda -s=15 -u=k -f=ff -t=p
+#fdisk -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco.dsk" -name=tercera -s=5 -u=k -f=ff -t=p
+#fdisk -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco.dsk" -name=cuarta -s=20 -u=k -f=ff -t=e
+
+#fdisk -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco.dsk" -name=logica3 -s=7 -u=k -f=ff -t=l
+
+
+#fdisk -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco.dsk" -name=primera -delete=full
+
+
+#mount -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco.dsk" -name=cuarta
