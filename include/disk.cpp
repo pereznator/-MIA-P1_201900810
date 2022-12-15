@@ -538,7 +538,6 @@ void Disk::addOrRemoveDataFomPartition(string name, string units, int add) {
   } else if (Utils::compare(units, "m")) {
     add = add * 1024 * 1024;
   }
-  cout << "SIZE: " << partition.part_size << " + " << add << " = " << partition.part_size + add << endl;
   if (partition.part_size + add < 0) {
     throw runtime_error("No se puede quitar mas del espacio disponible en la particion.");
   }
@@ -590,17 +589,46 @@ void Disk::addOrRemoveDataFomPartition(string name, string units, int add) {
 
 void Disk::deletePartition(string name) {
   Structs::Partition partition = Disk::getPartition(mainDisk, name, diskPath);
-  if (partition.part_type == 'l' || partition.part_type == 'L') {
-    return Utils::success("FDISK", "Particion logica eliminada correctamente.");
-  }
-  Structs::Partition foundPartition;
   Structs::Partition partitions[4];
-  partition.part_status = '0';
 
   partitions[0] = mainDisk.mbr_Partition_1;
   partitions[1] = mainDisk.mbr_Partition_2;
   partitions[2] = mainDisk.mbr_Partition_3;
   partitions[3] = mainDisk.mbr_Partition_4;
+
+  if (partition.part_type == 'l' || partition.part_type == 'L') {
+
+    vector<Structs::EBR> lpartitions;
+    int startingPoint = -1;
+
+    for (int i = 0; i < 4; i++) {
+      if (partitions[i].part_status == '1' && (partitions[i].part_type == 'e' || partitions[i].part_type == 'E')) {
+        startingPoint = partitions[i].part_start;
+        lpartitions = Disk::getLogicPartitions(partitions[i], diskPath);
+        break;
+      }
+    }
+
+    Structs::EBR previousEbr;
+    int idx = -1;
+    for (Structs::EBR &logic : lpartitions) {
+      idx++;
+      if (Utils::compare(logic.part_name, name)) {
+        break;
+      }
+      previousEbr = logic;
+    }
+
+    bool nextLogicExitst = false;
+    Structs::EBR nextLogic;
+    if (idx < lpartitions.size()) {
+      nextLogicExitst = true;
+      nextLogic = lpartitions[idx + 1];
+    }
+  
+    return Utils::success("FDISK", "Particion logica eliminada correctamente.");
+  }
+
   for (int i = 0; i < 4; i++) {
     if (Utils::compare(partitions[i].part_name, name)) {
       partitions[i].part_status = '0';

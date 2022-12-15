@@ -9,10 +9,16 @@
 #fdisk -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco.dsk" -name=tercera -s=5 -u=k -f=ff -t=p
 #fdisk -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco.dsk" -name=cuarta -s=20 -u=k -f=ff -t=e
 
-#fdisk -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco.dsk" -name=logica3 -s=7 -u=k -f=ff -t=l
+#fdisk -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco.dsk" -name=logica1 -s=7 -u=k -f=ff -t=l
+#fdisk -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco.dsk" -name=logica2 -s=5 -u=k -f=bf -t=l
+#fdisk -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco.dsk" -name=logica3 -s=2 -u=k -f=wf -t=l
 
 
 #fdisk -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco.dsk" -name=primera -delete=full
 
 
-#mount -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco.dsk" -name=cuarta
+mount -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco.dsk" -name=primera
+
+
+rep -path="/home/jorge/Documents/USAC DOCUMENTS/Vacaciones Diciembre 2022/Manejo E Implementacion de Archivos/Primer Proyecto/reports/reporte.html" -name=mbr -id=101a
+

@@ -1,0 +1,35 @@
+digraph G {
+  fontname="Helvetica,Arial,sans-serif"
+  node [fontname="Helvetica,Arial,sans-serif"]
+  edge [fontname="Helvetica,Arial,sans-serif"]
+  a0 [shape=none label=<
+ <TABLE border="0" cellspacing="10" cellpadding="10">
+  <TR>
+  <TD >00</TD>
+  <TD >01</TD>
+  <TD >02</TD>
+  <TD >03</TD>
+  </TR>
+  
+  <TR>
+  <TD gradientangle="270">10</TD>
+  <TD rowspan="2" >11</TD>
+  <TD>12</TD>
+  <TD>13</TD>
+  </TR>
+  
+  <TR>
+  <TD >20</TD>
+  <TD colspan="2">22</TD>
+  </TR>
+  
+  <TR>
+  <TD style="radial">30</TD>
+  <TD style="radial">31</TD>
+  <TD style="radial">32</TD>
+  <TD style="radial">33</TD>
+  </TR>
+  
+</TABLE>>];
+
+}

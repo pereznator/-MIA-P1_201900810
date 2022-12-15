@@ -36,7 +36,7 @@ void Mount::mountPartition(Structs::Partition part, Disk disk) {
   int index = -1;
 
   for (int i = 0; i < 99; i++) {
-    if (mounted[i].path == partName) {
+    if (mounted[i].path == disk.diskPath) {
       usedMountedDisk = mounted[i];
       foundDisk = true;
       index = i;
@@ -92,7 +92,7 @@ void Mount::listMounts() {
   for (int i = 0; i < 99; i++) {
     for (int j = 0; j < 26; j++) {
       if (mounted[i].mpartitions[j].status == '1') {
-        cout << "=> 10" << i + 1 << alphabet.at(j) << " : " << mounted[i].mpartitions[j].name  << endl;
+        cout << "=> 10" << i + 1 << alphabet.at(j) << " : " << mounted[i].mpartitions[j].name << endl;
       }
     }
   }

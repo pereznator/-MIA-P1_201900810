@@ -2,6 +2,7 @@
 #include "../lib/disk.h"
 #include "../lib/utils.h"
 #include "../lib/mount.h"
+#include "../lib/report.h"
 #include <iostream>
 #include <stdlib.h>
 #include <locale>
@@ -145,6 +146,15 @@ void Scanner::processData(string instruction, vector<string> tks) {
     return;
   }
   if (Utils::compare(instruction, "rep")) {
+    try {
+      if (!Utils::validateParameters(params, { "name", "path", "id" })) {
+        throw runtime_error("Faltan parametros necesarios para comando rep.");
+      }
+      Report rep;
+      rep.handelReports(mount.mounted, params["name"], params["path"], params["id"]);
+    } catch(exception &e) {
+       Utils::displayErrorMessage("REP", e.what());;
+    }
     return;
   }
   if (Utils::compare(instruction, "exec")) {
