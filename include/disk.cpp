@@ -742,6 +742,7 @@ Structs::Partition Disk::getPartition(Structs::MBR disk, string name, string pat
       throw runtime_error("No se encontro ninguna particion con el nombre \"" + name + "\".");
     }
     for (Structs::EBR &logic : logicPartitions) {
+      cout << "Logic name: " << logic.part_name << endl;
       if (logic.part_status == '1') {
         if (Utils::compare(logic.part_name, name)) {
           foundPartition.part_status = '1';

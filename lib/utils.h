@@ -24,6 +24,7 @@ class Utils {
     static void createDirectoryForPath(string path);
     static void comment(string text);
     static vector<Structs::Partition> getPartitions(Structs::MBR disk);
+    static string wrongParam(map<string, string> params, vector<string> requiredParams);
 };
 
 #endif

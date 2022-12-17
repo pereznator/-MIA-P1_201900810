@@ -133,7 +133,7 @@ void Report::createMbrReport(Structs::MBR mbr, string path, string reportPath) {
   htmlFile.open(reportPath, ios::out | ios::trunc);
   htmlFile << htmlStart;
   htmlFile.close();
-
+  Utils::success("REP", "Se creó reporte MBR exitosamente.");
 }
 
 int Report::getIndex(char letter) {
@@ -368,5 +368,6 @@ void Report::createDiskReport(Structs::MBR mbr, string path, string reportPath) 
   htmlFile.open(reportPath, ios::out | ios::trunc);
   htmlFile << htmlStart;
   htmlFile.close();
+  Utils::success("REP", "Se creó reporte DISK exitosamente.");
 
 }

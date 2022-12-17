@@ -1,6 +1,6 @@
 #CREACION DE DISCOS
-Mkdisk -s=50 -u=M -path=/home/archivos/Disco1.dsk -f=FF
-#Mkdisk -u=k -s=51200 -path=/home/archivos/Disco2.dsk -f=BF
+#Mkdisk -s=50 -u=M -path=/home/archivos/Disco1.dsk -f=FF
+#Mkdisk -u=k -s=51200 -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -f=BF
 #mkDisk -s=10 -path=/home/archivos/Disco3.dsk
 #mkdisk -s=51200 -path="/home/archivos/mis archivos/Disco4.dsk" -u=K
 #mkDisk -s=20 -path="/home/archivos/mis archivos/Disco5.dsk" -u=M -f=WF
@@ -16,60 +16,60 @@ Mkdisk -s=50 -u=M -path=/home/archivos/Disco1.dsk -f=FF
 
 #CREACION DE PARTICIONES
 #Particiones en el disco1
-#fdisk -type=P -u=K -name=Part1 -s=7680 -path=/home/archivos/Disco1.dsk -f=BF #7.5 MB
-#fdisk -type=E -u=K -name=Part2 -s=7680 -path=/home/archivos/Disco1.dsk -f=FF
-#fdisk -type=E -u=K -name=Part3 -s=7680 -path=/home/archivos/Disco1.dsk -f=WF #Deberia dar error
-#fdisk -type=P -u=K -name=Part3 -s=7680 -path=/home/archivos/Disco1.dsk -f=WF
-#fdisk -type=P -u=K -name=Part4 -s=7680 -path=/home/archivos/Disco1.dsk -f=BF
-#FDISK -type=L -u=k -name=Part5 -s=1280 -path=/home/archivos/Disco1.dsk -f=BF #1.25 MB
-#fdisk -type=L -u=K -name=Part6 -s=1280 -path=/home/archivos/Disco1.dsk -f=WF
-#fdisk -type=L -u=K -name=Part7 -s=1280 -path=/home/archivos/Disco1.dsk -f=wf
-#fdisk -type=L -u=K -name=Part8 -s=1280 -path=/home/archivos/Disco1.dsk -f=ff
-#fdisk -type=L -u=K -name=Part9 -s=1280 -path=/home/archivos/Disco1.dsk -f=bf
-#fdisk -type=L -u=K -name=Part9 -s=1024 -path=/home/archivos/Disco1.dsk -f=BF #ERROR nombre 
+#fdisk -t=P -u=K -name=Part1 -s=7680 -path=/home/archivos/Disco1.dsk -f=BF #7.5 MB
+#fdisk -t=E -u=K -name=Part2 -s=7680 -path=/home/archivos/Disco1.dsk -f=FF
+#fdisk -t=E -u=K -name=Part3 -s=7680 -path=/home/archivos/Disco1.dsk -f=WF #Deberia dar error
+#fdisk -t=P -u=K -name=Part3 -s=7680 -path=/home/archivos/Disco1.dsk -f=WF
+#fdisk -t=P -u=K -name=Part4 -s=7680 -path=/home/archivos/Disco1.dsk -f=BF
+#FDISK -t=L -u=k -name=Part5 -s=1280 -path=/home/archivos/Disco1.dsk -f=BF #1.25 MB
+#fdisk -t=L -u=K -name=Part6 -s=1280 -path=/home/archivos/Disco1.dsk -f=WF
+#fdisk -t=L -u=K -name=Part7 -s=1280 -path=/home/archivos/Disco1.dsk -f=wf
+#fdisk -t=L -u=K -name=Part8 -s=1280 -path=/home/archivos/Disco1.dsk -f=ff
+#fdisk -t=L -u=K -name=Part9 -s=1280 -path=/home/archivos/Disco1.dsk -f=bf
+#fdisk -t=L -u=K -name=Part9 -s=1024 -path=/home/archivos/Disco1.dsk -f=BF #ERROR nombre 
 
 #Particiones en el disco2
-#fdisk -type=L -u=k -name=Part11 -s=10240 -path=/home/archivos/Disco2.dsk -f=BF #ERRROR no hay una extendida
-#fdisk -type=L -u=k -name=Part12 -s=10240 -path=/home/archivos/Disco2.dsk -f=BF #ERRROR no hay una extendida
-#fDisk -type=P -u=K -name=Part11 -s=10240 -path=/home/archivos/Disco2.dsk -f=BF #10 MB
-#fDisk -type=P -u=m -name=Part12 -s=5 -path=/home/archivos/Disco2.dsk -f=FF #5MB
-#fDisk -type=P -u=K -name=Part13 -s=5120 -path=/home/archivos/Disco2.dsk -f=WF #5 MB
-#fdisk -type=E -u=m -name=Part14 -s=20 -path=/home/archivos/Disco2.dsk #20 MB
-#fdisk -type=L -u=k -name=Part15 -s=1536 -path=/home/archivos/Disco2.dsk #1.5 MB
-#fdisk -type=L -u=k -name=Part16 -s=1536 -path=/home/archivos/Disco2.dsk -f=BF
-#fdisk -type=L -u=k -name=Part17 -s=1536 -path=/home/archivos/Disco2.dsk -f=FF
-#fdisk -type=L -u=k -name=Part18 -s=1536 -path=/home/archivos/Disco2.dsk -f=BF
-#fdisk -type=L -u=k -name=Part19 -s=1536 -path=/home/archivos/Disco2.dsk -f=WF
-#fdisk -type=L -u=k -name=Part20 -s=1536 -path=/home/archivos/Disco2.dsk -f=BF
-#fdisk -type=L -u=k -name=Part21 -s=1536 -path=/home/archivos/Disco2.dsk -f=FF
-#fdisk -type=L -u=k -name=Part22 -s=1536 -path=/home/archivos/Disco2.dsk -f=BF
-#fdisk -type=L -u=k -name=Part23 -s=1536 -path=/home/archivos/Disco2.dsk -f=FF
-#fdisk -type=L -u=k -name=Part24 -s=1536 -path=/home/archivos/Disco2.dsk -f=BF
-#fdisk -type=L -u=k -name=Part25 -s=1536 -path=/home/archivos/Disco2.dsk -f=wF
-#fdisk -type=L -u=k -name=Part26 -s=1536 -path=/home/archivos/Disco2.dsk -f=BF
-#fdisk -type=L -u=k -name=Part27 -s=1536 -path=/home/archivos/Disco2.dsk -f=FF
+#fdisk -t=L -u=k -name=Part11 -s=10240 -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -f=BF #ERRROR no hay una extendida
+#fdisk -t=L -u=k -name=Part12 -s=10240 -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -f=BF #ERRROR no hay una extendida
+#fDisk -t=P -u=K -name=Part11 -s=10240 -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -f=BF #10 MB
+#fDisk -t=P -u=m -name=Part12 -s=5 -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -f=FF #5MB
+#fDisk -t=P -u=K -name=Part13 -s=5120 -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -f=WF #5 MB
+#fdisk -t=E -u=m -name=Part14 -s=20 -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" #20 MB
+#fdisk -t=L -u=k -name=Part15 -s=1536 -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" #1.5 MB
+#fdisk -t=L -u=k -name=Part16 -s=1536 -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -f=BF
+#fdisk -t=L -u=k -name=Part17 -s=1536 -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -f=FF
+#fdisk -t=L -u=k -name=Part18 -s=1536 -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -f=BF
+#fdisk -t=L -u=k -name=Part19 -s=1536 -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -f=WF
+#fdisk -t=L -u=k -name=Part20 -s=1536 -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -f=BF
+#fdisk -t=L -u=k -name=Part21 -s=1536 -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -f=FF
+#fdisk -t=L -u=k -name=Part22 -s=1536 -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -f=BF
+#fdisk -t=L -u=k -name=Part23 -s=1536 -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -f=FF
+#fdisk -t=L -u=k -name=Part24 -s=1536 -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -f=BF
+#fdisk -t=L -u=k -name=Part25 -s=1536 -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -f=wF
+#fdisk -t=L -u=k -name=Part26 -s=1536 -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -f=BF
+#fdisk -t=L -u=k -name=Part27 -s=1536 -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -f=FF
 
 
 #Particiones en el disco 5
-#fdisk -type=E -u=k -name=Part30 -s=5120 -path="/home/archivos/mis archivos/Disco5.dsk" -f=BF #5MB
-#fdisk -type=L -u=k -name=Part31 -s=1024 -path="/home/archivos/mis archivos/Disco5.dsk" -f=BF
-#fdisk -type=P -u=k -name=Part32 -s=5120 -path="/home/archivos/mis archivos/Disco5.dsk" -f=BF
-#fdisk -type=L -u=k -name=Part33 -s=1024 -path="/home/archivos/mis archivos/Disco5.dsk" -f=BF
-#fdisk -type=P -u=k -name=Part34 -s=5120 -path="/home/archivos/mis archivos/Disco5.dsk" -f=BF
-#fdisk -type=L -u=k -name=Part36 -s=1024 -path="/home/archivos/mis archivos/Disco5.dsk" -f=BF
-#fdisk -type=L -u=k -name=Part37 -s=1024 -path="/home/archivos/mis archivos/Disco5.dsk" -f=BF
+#fdisk -t=E -u=k -name=Part30 -s=5120 -path="/home/archivos/mis archivos/Disco5.dsk" -f=BF #5MB
+#fdisk -t=L -u=k -name=Part31 -s=1024 -path="/home/archivos/mis archivos/Disco5.dsk" -f=BF
+#fdisk -t=P -u=k -name=Part32 -s=5120 -path="/home/archivos/mis archivos/Disco5.dsk" -f=BF
+#fdisk -t=L -u=k -name=Part33 -s=1024 -path="/home/archivos/mis archivos/Disco5.dsk" -f=BF
+#fdisk -t=P -u=k -name=Part34 -s=5120 -path="/home/archivos/mis archivos/Disco5.dsk" -f=BF
+#fdisk -t=L -u=k -name=Part36 -s=1024 -path="/home/archivos/mis archivos/Disco5.dsk" -f=BF
+#fdisk -t=L -u=k -name=Part37 -s=1024 -path="/home/archivos/mis archivos/Disco5.dsk" -f=BF
 
 #Eliminar particiones disco1
-#fdisk -delete=fast -name=Part1 -path=/home/archivos/Disco1.dsk
-#fdisk -delete=fast -name=Part6 -path=/home/archivos/Disco1.dsk
-#fdisk -delete=fast -name=Part10 -path=/home/archivos/Disco1.dsk #Error no existe
-#fdisk -delete=fast -name=Part9 -path=/home/archivos/Disco1.dsk
+#fdisk -delete=full -name=Part1 -path=/home/archivos/Disco1.dsk
+#fdisk -delete=full -name=Part6 -path=/home/archivos/Disco1.dsk
+#fdisk -delete=full -name=Part10 -path=/home/archivos/Disco1.dsk #Error no existe
+#fdisk -delete=full -name=Part9 -path=/home/archivos/Disco1.dsk
 #Agregando espacio
 #fdisk -add=500 -u=K -path=/home/archivos/Disco1.dsk -name=Part4
 
 #Eliminadndo y agregando espacio disco2
-#fdisk -delete=fast -name=Part13 -path=/home/archivos/Disco2.dsk
-#fdisk -add=1 -u=m -path=/home/archivos/Disco2.dsk -name=Part12
+#fdisk -delete=full -name=Part13 -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk"
+#fdisk -add=-1 -u=m -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -name=Part12
 
 #MONTAR PARTICIONES
 #mount -path=/home/archivos/Disco3.dsk -name=Part3 #ERROR no existe
@@ -78,10 +78,10 @@ Mkdisk -s=50 -u=M -path=/home/archivos/Disco1.dsk -f=FF
 #mount -path=/home/archivos/Disco1.dsk -name=Part4 #581c
 #mount -path=/home/archivos/Disco1.dsk -name=Part5 #581d
 #mount -path=/home/archivos/Disco1.dsk -name=Part7 #581e
-#mount -path=/home/archivos/Disco2.dsk -name=Part14 #582a
-#mount -path=/home/archivos/Disco2.dsk -name=Part15 #582b
-#mount -path=/home/archivos/Disco2.dsk -name=Part16 #582c
-#mount -path=/home/archivos/Disco2.dsk -name=Part17 #582d
+mount -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -name=Part14 #582a
+#mount -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -name=Part15 #582b
+#mount -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -name=Part16 #582c
+#mount -path="/home/jorge/Desktop/no entrar/no mirar/secreto/disco2.dsk" -name=Part17 #582d
 #mount -path="/home/archivos/mis archivos/Disco5.dsk" -name=Part30 #583a
 #mount -path="/home/archivos/mis archivos/Disco5.dsk" -name=Part31 #583b
 #mount -path="/home/archivos/mis archivos/Disco5.dsk" -name=Part32 #583c
@@ -95,7 +95,7 @@ Mkdisk -s=50 -u=M -path=/home/archivos/Disco1.dsk -f=FF
 
 #REPORTES
 #rep -id=581a -Path=/home/archivos/reports/reporte1.jpg -name=disk
-#rep -id=581a -Path=/home/archivos/reports/reporte2.jpg -name=mbr
+rep -id=101a -path="/home/jorge/Documents/USAC DOCUMENTS/Vacaciones Diciembre 2022/Manejo E Implementacion de Archivos/Primer Proyecto/reports/reporte2.html" -name=mbr
 #rep -id=582b -path=/home/archivos/reports/reporte3.jpg -name=disk
 #rep -id=582b -path=/home/archivos/reports/reporte4.jpg -name=mbr
 #rep -id=583c -path=/home/archivos/reports/reporte5.jpg -name=disk

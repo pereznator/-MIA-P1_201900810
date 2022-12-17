@@ -22,7 +22,7 @@
 #fdisk -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco.dsk" -name=logica2 -delete=full
 #fdisk -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco.dsk" -name=logica3 -delete=full
 
-mount -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco.dsk" -name=segunda
+mount -path="/home/jorge/Desktop/no entrar/no mirar/secreto/testDisco.dsk" -name=logica3
 
 pause
 

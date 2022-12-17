@@ -29,7 +29,7 @@ void Scanner::start() {
       cout << "BYE BYE";
       break;
     }
-    //text = "exec -path=../script.mia";
+    //text = "exec -path=../sc.mia";
     string firstToken = getToken(text);
     text.erase(0, firstToken.length() + 1);
     vector<string> tokens = splitTokens(text);
@@ -41,6 +41,11 @@ void Scanner::processData(string instruction, vector<string> tks) {
   map<string, string> params = getParameters(tks);
 
   if (Utils::compare(instruction, "mkdisk")) {
+
+    if (Utils::wrongParam(params, {"S", "F", "U", "PATH"}) != "") {
+      return Utils::displayErrorMessage("MKDISK", "No se reconoce el parametro : \""+Utils::wrongParam(params, {"S", "F", "U", "PATH"})+"\"");
+    }
+
     if (!Utils::validateParameters(params, { "path", "s" })) {
       return Utils::displayErrorMessage("MKDISK", "No se ingreso el parametro path.");
     }
@@ -53,6 +58,10 @@ void Scanner::processData(string instruction, vector<string> tks) {
   }
   if (Utils::compare(instruction, "rmdisk")) {
 
+    if (Utils::wrongParam(params, {"PATH"}) != "") {
+      return Utils::displayErrorMessage("RMDISK", "No se reconoce el parametro : \""+Utils::wrongParam(params, {"PATH"})+"\"");
+    }
+
     if (!Utils::validateParameters(params, { "path" })) {
       return Utils::displayErrorMessage("RMDISK", "Parametro path es obligatorio para comando rmdisk.");
     }
@@ -60,6 +69,11 @@ void Scanner::processData(string instruction, vector<string> tks) {
     return Disk::removeDisk(params["path"]);
   }
   if (Utils::compare(instruction, "fdisk")) {
+
+    if (Utils::wrongParam(params, {"S", "F", "U", "PATH", "T", "DELETE", "NAME", "ADD"}) != "") {
+      return Utils::displayErrorMessage("FDISK", "No se reconoce el parametro : \""+Utils::wrongParam(params,  {"S", "F", "U", "PATH", "T", "DELETE", "NAME", "ADD"})+"\"");
+    }
+
     if (!Utils::validateParameters(params, { "path", "name" })) {
       return Utils::displayErrorMessage("FDISK", "Parametros para la ruta o el nombre de la particion faltan.");
     }
@@ -98,6 +112,11 @@ void Scanner::processData(string instruction, vector<string> tks) {
   }
   if (Utils::compare(instruction, "mount")) {
     try {
+
+      if (Utils::wrongParam(params, {"PATH", "NAME"}) != "") {
+        throw runtime_error("No se reconoce el parametro : \""+Utils::wrongParam(params, {"PATH", "NAME"})+"\"");
+      }
+
       if (!Utils::validateParameters(params, { "path", "name" })) {
         throw runtime_error("Mount necesita parametros path y name para ejecutarse.");
       }
@@ -113,6 +132,11 @@ void Scanner::processData(string instruction, vector<string> tks) {
   }
   if (Utils::compare(instruction, "unmount")) {
     try {
+
+      if (Utils::wrongParam(params, {"ID"}) != "") {
+        throw runtime_error("No se reconoce el parametro : \""+Utils::wrongParam(params, {"ID"})+"\"");
+      }
+
       if (!Utils::validateParameters(params, { "id"})) {
         throw runtime_error("Id no ingresado.");
       }
@@ -147,6 +171,11 @@ void Scanner::processData(string instruction, vector<string> tks) {
   }
   if (Utils::compare(instruction, "rep")) {
     try {
+
+      if (Utils::wrongParam(params, {"PATH", "NAME", "ID"}) != "") {
+        throw runtime_error("No se reconoce el parametro : \""+Utils::wrongParam(params, {"PATH", "NAME", "ID"})+"\"");
+      }
+
       if (!Utils::validateParameters(params, { "name", "path", "id" })) {
         throw runtime_error("Faltan parametros necesarios para comando rep.");
       }
@@ -158,6 +187,11 @@ void Scanner::processData(string instruction, vector<string> tks) {
     return;
   }
   if (Utils::compare(instruction, "exec")) {
+
+    if (Utils::wrongParam(params, {"PATH"}) != "") {
+        throw runtime_error("No se reconoce el parametro : \""+Utils::wrongParam(params, {"PATH"})+"\"");
+    }
+
     if (params.count("path") != 1) {
       Utils::displayErrorMessage("EXEC", "No se ingreso parametro path para leer el archivo de comandos.");
       return;

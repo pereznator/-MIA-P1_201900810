@@ -4,6 +4,7 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -96,4 +97,14 @@ vector<Structs::Partition> Utils::getPartitions(Structs::MBR disk) {
   partitions.push_back(disk.mbr_Partition_3);
   partitions.push_back(disk.mbr_Partition_4);
   return partitions;
+}
+
+string Utils::wrongParam(map<string, string> params, vector<string> possibleParams) {
+  string invalidParam = "";
+  for (const auto &key : params) {
+    if (!count(possibleParams.begin(), possibleParams.end(), toUpperCase(key.first))) {
+      invalidParam = key.first;
+    }
+  }
+  return invalidParam;
 }
