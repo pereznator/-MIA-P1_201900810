@@ -184,9 +184,11 @@ void Disk::createPartition(string name, int size, string units, string type, str
   int extendedPartitions = 0;
   int c = 1;
   int base = sizeof(mainDisk);
+  int usedSpace = sizeof(mainDisk);
   Structs::Partition extended;
   for(Structs::Partition p : partitions){
     if (p.part_status == '1') {
+      usedSpace += p.part_size;
       Transition trn;
       trn.partition = c;
       trn.start = p.part_start;
@@ -230,13 +232,47 @@ void Disk::createPartition(string name, int size, string units, string type, str
     return createLogicPartition(extended, name, fit, units, size);
   }
 
+  int partitionSize = Utils::compare(units, "k") ? size * 1024 : size * 1024 * 1024;
+
+  if (usedSpace + partitionSize > mainDisk.mbr_tamano) {
+    return Utils::displayErrorMessage("FDISK", "No se puede crear una particion de tamaño " +to_string(partitionSize)+" porque supera el espacio disponible.");
+  }
+
   Structs::Partition newPartition;
   newPartition.part_fit = toupper(fit[0]);
   strcpy(newPartition.part_name, name.c_str());
-  newPartition.part_size = Utils::compare(units, "k") ? size * 1024 : size * 1024 * 1024;
+  newPartition.part_size = partitionSize;
   newPartition.part_status = '1';
   newPartition.part_type = toupper(type[0]);
+  /*
+  // new block of code
+  Structs::Partition parts[4];
+  parts[0] = mainDisk.mbr_Partition_1;
+  parts[1] = mainDisk.mbr_Partition_2;
+  parts[2] = mainDisk.mbr_Partition_3;
+  parts[3] = mainDisk.mbr_Partition_4;
 
+  int startValue = 0;
+  int endValue = mainDisk.mbr_tamano;
+  bool created = false;
+
+  for (int idx = 0; idx < 4; idx++) {
+    if (parts[idx].part_status == '1') {
+      created = true;
+      if (startValue < parts[idx].part_start) {
+        startValue += parts[idx].part_status;
+      } else {
+
+      }
+    } else {
+      if (created) {
+
+      }
+    }
+  }
+
+  //end new block of code
+  */
   mainDisk = partitionAdjustment(mainDisk, newPartition, between, partitions, usedPartitions);
 
   FILE *binaryFile = fopen(diskPath.c_str(), "rb+");
@@ -394,6 +430,14 @@ vector<Structs::EBR> Disk::getLogicPartitions(Structs::Partition partition, stri
 }
 
 Structs::MBR Disk::partitionAdjustment(Structs::MBR mbr, Structs::Partition p, vector<Transition> t, vector<Structs::Partition> ps, int u){
+  /*for (Transition tr : t) {
+    cout << "=====Transitions=====" << endl;
+    cout << "partition: " << tr.partition << endl;
+    cout << "start    : " << tr.start << endl;
+    cout << "end      : " << tr.end << endl;
+    cout << "before   : " << tr.before << endl;
+    cout << "after    : " << tr.after << endl;
+  }*/
   if (u == 0) {
     p.part_start = sizeof(mbr);
     startValue = p.part_start;
@@ -453,7 +497,11 @@ Structs::MBR Disk::partitionAdjustment(Structs::MBR mbr, Structs::Partition p, v
   if (toUse.before >= p.part_size || toUse.after >= p.part_size) {
     if (toupper(mbr.disk_fit) == 'F') {
       if (toUse.before >= p.part_size) {
-        p.part_start = (toUse.start - toUse.before);
+        if (toUse.start - toUse.before != 0) {
+          p.part_start = (toUse.start - toUse.before);
+        }else {
+          p.part_start = toUse.end;
+        }
         startValue = p.part_start;
       } else {
         p.part_start = toUse.end;
@@ -464,7 +512,11 @@ Structs::MBR Disk::partitionAdjustment(Structs::MBR mbr, Structs::Partition p, v
       int a1 = toUse.after - p.part_size;
 
       if ((toUse.before >= p.part_size && b1 < a1) || !(toUse.after >= p.part_start)) {
-        p.part_start = (toUse.start - toUse.before);
+        if (toUse.start - toUse.before != 0) {
+          p.part_start = (toUse.start - toUse.before);
+        }else {
+          p.part_start = toUse.end;
+        }
         startValue = p.part_start;
       } else {
         p.part_start = toUse.end;
@@ -475,7 +527,11 @@ Structs::MBR Disk::partitionAdjustment(Structs::MBR mbr, Structs::Partition p, v
       int a1 = toUse.after - p.part_size;
 
       if ((toUse.before >= p.part_size && b1 > a1) || !(toUse.after >= p.part_start)) {
-        p.part_start = (toUse.start - toUse.before);
+        if (toUse.start - toUse.before != 0) {
+          p.part_start = (toUse.start - toUse.before);
+        }else {
+          p.part_start = toUse.end;
+        }
         startValue = p.part_start;
       } else {
         p.part_start = toUse.end;
@@ -632,6 +688,12 @@ void Disk::deletePartition(string name) {
   for (int i = 0; i < 4; i++) {
     if (Utils::compare(partitions[i].part_name, name)) {
       partitions[i].part_status = '0';
+      char emptyName[16];
+      strcpy(partitions[i].part_name, emptyName);
+      partitions[i].part_size = 0;
+      partitions[i].part_fit = ' ';
+      partitions[i].part_start = -1;
+      partitions[i].part_type = ' ';
       break;
     }
   }

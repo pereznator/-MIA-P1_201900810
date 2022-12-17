@@ -47,6 +47,9 @@ void Mount::mountPartition(Structs::Partition part, Disk disk) {
 
   if (foundDisk) {
     for (int j = 0; j < 26; j++) {
+      if (Utils::compare(usedMountedDisk.mpartitions[j].name, partName)) {
+        return Utils::displayErrorMessage("MOUNT", "Particion " + partName + " ya se encuentra montada.");
+      }
       if (usedMountedDisk.mpartitions[j].status == '0') {
         usedMountedDisk.mpartitions[j].status = '1';
         usedMountedDisk.mpartitions[j].letter = alphabet.at(j);

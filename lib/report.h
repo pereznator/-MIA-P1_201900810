@@ -16,9 +16,16 @@ class Report {
     void createDiskReport(Structs::MBR mbr, string path, string reoprtPath);
     string createTableRow(string label, string value);
     string createTableHeader(string type);
+    typedef struct _MbrEmptySpace {
+      int size;
+      int start;
+      char html[250];
+      char type;
+    } MbrEmptySpace;
   private:
     vector<char> alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
     int getIndex(char letter);
+
 };
 
 #endif

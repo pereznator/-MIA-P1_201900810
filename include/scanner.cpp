@@ -29,7 +29,7 @@ void Scanner::start() {
       cout << "BYE BYE";
       break;
     }
-    text = "exec -path=../script.mia";
+    //text = "exec -path=../script.mia";
     string firstToken = getToken(text);
     text.erase(0, firstToken.length() + 1);
     vector<string> tokens = splitTokens(text);
@@ -168,7 +168,7 @@ void Scanner::processData(string instruction, vector<string> tks) {
   if (Utils::compare(instruction, "pause")) {
     cout << "Presione cualquier tecla para continuar..." << endl;
     string nextIns;
-    cin >> nextIns;
+    getline(cin, nextIns);
     return;
   }
   if (Utils::compare(instruction.substr(0,1), "#")) {
